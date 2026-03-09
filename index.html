@@ -9,6 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     
     <style>
+		/* FOGLIE CADENTI IN SOTTOFONDO */
+        .foglia-cadente {
+            position: fixed;
+            top: -50px;
+            pointer-events: none; /* Fa sì che non blocchino i click sui bottoni */
+            z-index: 0; /* Stanno dietro al contenuto centrale */
+            opacity: 0.15; /* Molto delicate, quasi in filigrana */
+            animation: caduta linear infinite;
+        }
+
+        @keyframes caduta {
+            0% { transform: translateY(-50px) rotate(0deg) translateX(0px); }
+            50% { transform: translateY(50vh) rotate(180deg) translateX(30px); }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(-30px); }
+        }
+		
         /* COLORI E VARIABILI */
         :root {
             --sfondo-esterno: #F4F1EA;
@@ -259,10 +275,35 @@
             h1 { font-size: 4rem; }
             .container-carta { padding: 60px 20px 40px 20px; }
         }
+
+		/* STILE PRELOADER */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--sfondo-carta);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+        .iniziali-preloader {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--verde-scuro);
+            animation: battito 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes battito {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
-
+	<!-- SCHERMATA DI CARICAMENTO -->
+    <div id="preloader">
+        <div class="iniziali-preloader">I & U</div>
+    </div>
     <!-- DEFINIZIONE INVISIBILE DELL'SVG (OTTIMIZZAZIONE PUNTO 7) -->
     <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -389,10 +430,13 @@
 
     <script>
         /* ANIMAZIONI ALLO SCROLL */
-        const observer = new IntersectionObserver((entries) => {
+		const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
+                } else {
+                    // Questa riga fa "resettare" l'animazione quando sali!
+                    entry.target.classList.remove('show'); 
                 }
             });
         }, { threshold: 0.15 });
@@ -447,6 +491,38 @@
                     btn.disabled = false;
                     btn.innerHTML = 'Errore di invio. Riprova.';
                 });
+        });
+		/* CREAZIONE DELLE FOGLIE CADENTI */
+        function creaFoglie() {
+            const numFoglie = 6; // Numero di foglie sullo schermo
+            const svgFoglia = '<svg viewBox="0 0 100 25" width="40" height="40"><path d="M 25 17 Q 30 5 40 10 Q 33 19 25 17" fill="var(--verde-chiaro)"/></svg>';
+            
+            for(let i = 0; i < numFoglie; i++) {
+                let foglia = document.createElement('div');
+                foglia.innerHTML = svgFoglia;
+                foglia.classList.add('foglia-cadente');
+                
+                // Posizione orizzontale casuale
+                foglia.style.left = Math.random() * 100 + 'vw';
+                // Durata della caduta casuale (tra 10 e 20 secondi, molto lente!)
+                foglia.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                // Ritardo casuale per non farle cadere tutte insieme
+                foglia.style.animationDelay = (Math.random() * 5) + 's';
+                // Dimensione casuale
+                foglia.style.transform = 'scale(' + (Math.random() * 0.5 + 0.8) + ')';
+                
+                document.body.appendChild(foglia);
+            }
+        }
+        creaFoglie();
+
+		/* DISSOLVENZA PRELOADER DOPO IL CARICAMENTO */
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 1000); // Rimuove il div dopo la dissolvenza
+            }, 800); // Aspetta 0.8 secondi per mostrare bene l'effetto
         });
     </script>
 </body>
