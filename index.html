@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilaria & Umberto - 25 Settembre 2026</title>
+    
+    <!-- Importazione Font Ultra-Eleganti -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COLORI E VARIABILI */
+        :root {
+            --sfondo-esterno: #F4F1EA;
+            --sfondo-carta: #FDFBF7;
+            --verde-scuro: #2C402E; 
+            --verde-chiaro: #738A76;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--sfondo-esterno);
+            color: var(--verde-scuro);
+            margin: 0;
+            padding: 40px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* L'EFFETTO PARTECIPAZIONE CARTACEA */
+        .container-carta {
+            background-color: var(--sfondo-carta);
+            max-width: 650px;
+            width: 100%;
+            padding: 90px 30px 60px 30px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid rgba(44, 64, 46, 0.1);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            margin: 0 0 20px 0;
+            color: var(--verde-scuro);
+            line-height: 1;
+        }
+
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--verde-chiaro);
+            margin: 0 0 15px 0;
+            font-weight: normal;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 10px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .testo-annuncio {
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            font-size: 1.1rem; 
+            margin-top: 25px;
+            margin-bottom: 25px;
+            line-height: 2;
+        }
+
+        .data-matrimonio {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            color: var(--verde-scuro);
+            border-top: 1px solid var(--verde-chiaro);
+            border-bottom: 1px solid var(--verde-chiaro);
+            display: inline-block;
+            padding: 15px 0 15px 8px;
+        }
+
+        /* DIVISORE FLOREALE CON ANIMAZIONE SWAY (OSCILLANTE) */
+        @keyframes foglia-cade {
+            0%   { transform: rotate(0deg); }
+            15%  { transform: rotate(12deg); } /* Va a destra */
+            30%  { transform: rotate(-8deg); } /* Torna a sinistra */
+            45%  { transform: rotate(5deg); }  /* Destra leggermente */
+            60%  { transform: rotate(-2deg); } /* Sinistra appena appena */
+            75%, 100% { transform: rotate(0deg); } /* Si assesta e sta ferma */
+        }
+        
+        .divisore-ramo {
+            width: 140px;
+            height: 30px;
+            margin: 40px auto;
+            display: block;
+            /* L'animazione dura 5 secondi e si ripete all'infinito */
+            animation: foglia-cade 5s ease-in-out infinite; 
+            transform-origin: center center;
+        }
+
+        /* STRUTTURA SEZIONI E ANIMAZIONI */
+        section {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CONTO ALLA ROVESCIA ELEGANTE */
+        #countdown {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 40px;
+            min-height: 80px; /* Previene salti di layout se appare "Oggi Sposi" */
+        }
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time-box span:first-child {
+            font-size: 2.5rem;
+            font-family: 'Great Vibes', cursive;
+            color: var(--verde-scuro);
+        }
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--verde-chiaro);
+        }
+        
+        /* Messaggio a timer scaduto */
+        .oggi-sposi {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--verde-chiaro);
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* MAPPE E BOTTONI NAVIGATORE */
+        iframe {
+            width: 100%;
+            height: 250px;
+            border: 1px solid var(--verde-chiaro);
+            padding: 5px;
+            background: #fff;
+            margin-top: 20px;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .btn-mappa {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            border: 1px solid var(--verde-chiaro);
+            color: var(--verde-scuro);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .btn-mappa:hover {
+            background-color: var(--verde-scuro);
+            color: var(--sfondo-carta);
+            border-color: var(--verde-scuro);
+        }
+
+        /* FORM RSVP CHIC */
+        form {
+            width: 100%;
+            max-width: 450px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 5px;
+            color: var(--verde-scuro);
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid var(--verde-chiaro);
+            background: transparent;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--verde-scuro);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, select:focus {
+            border-bottom: 2px solid var(--verde-scuro);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: transparent;
+            color: var(--verde-scuro);
+            border: 1px solid var(--verde-scuro);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Cormorant Garamond', serif;
+            margin-top: 10px;
+        }
+        
+        /* Stile bottone normale vs disabilitato (durante l'invio) */
+        button:hover:not(:disabled) {
+            background-color: var(--verde-scuro);
+            color: var(--sfondo-carta);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: var(--verde-chiaro);
+        }
+
+        .iban-box {
+            border: 1px solid var(--verde-chiaro);
+            padding: 25px;
+            margin-top: 20px;
+            background-color: rgba(115, 138, 118, 0.03);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 4rem; }
+            .container-carta { padding: 60px 20px 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DEFINIZIONE INVISIBILE DELL'SVG (OTTIMIZZAZIONE PUNTO 7) -->
+    <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <g id="rametto-vettoriale">
+                <path d="M 5 15 Q 50 20 95 15" fill="none" stroke="var(--verde-chiaro)" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M 25 17 Q 30 5 40 10 Q 33 19 25 17" fill="var(--verde-chiaro)"/>
+                <path d="M 60 18 Q 50 7 43 12 Q 52 21 60 18" fill="var(--verde-chiaro)"/>
+                <path d="M 75 16 Q 80 5 90 10 Q 83 18 75 16" fill="var(--verde-chiaro)"/>
+                <path d="M 45 19 Q 35 28 25 24 Q 38 17 45 19" fill="var(--verde-chiaro)"/>
+            </g>
+        </defs>
+    </svg>
+
+    <div class="container-carta">
+        
+        <!-- COPERTINA -->
+        <section class="hidden">
+            <h1>Ilaria & Umberto</h1>
+            <p class="testo-annuncio">Sono lieti di annunciare<br>il loro matrimonio il giorno</p>
+            <div class="data-matrimonio">25 . 09 . 26</div>
+            
+            <div id="countdown">
+                <div class="time-box"><span id="days">00</span><span class="time-label">Giorni</span></div>
+                <div class="time-box"><span id="hours">00</span><span class="time-label">Ore</span></div>
+                <div class="time-box"><span id="minutes">00</span><span class="time-label">Minuti</span></div>
+                <div class="time-box"><span id="seconds">00</span><span class="time-label">Secondi</span></div>
+            </div>
+        </section>
+
+        <!-- CERIMONIA -->
+        <section class="hidden">
+            <!-- RICHIAMO SVG OTTIMIZZATO -->
+            <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+            <h2>La Cerimonia</h2>
+            <p>Si terrà alle ore <strong>16:00</strong> presso:</p>
+            
+            <!-- INDIRIZZO FORMATTATO E UNIFORMATO -->
+            <p style="font-style: italic; line-height: 1.6;">
+                <strong>Chiesa della Madonna di Lourdes</strong><br>
+                Via S. Bernadette Soubirous, 3<br>
+                09012 Poggio dei Pini, Capoterra (CA)
+            </p>
+            
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.4186978208613!2d8.968371876354162!3d39.14245753220687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e73ad51a480c6d%3A0xc1358f503a391022!2sChiesa%20della%20Madonna%20di%20Lourdes!5e0!3m2!1sit!2sit!4v1773078616074!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+            <!-- BOTTONE NAVIGATORE -->
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Chiesa+della+Madonna+di+Lourdes,+09012+Poggio+dei+Pini+CA" target="_blank" class="btn-mappa">Apri nel Navigatore</a>
+        </section>
+
+        <!-- RICEVIMENTO -->
+        <section class="hidden">
+            <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+            <h2>Il Ricevimento</h2>
+            <p>Dopo la cerimonia festeggeremo insieme presso:</p>
+            
+            <!-- INDIRIZZO FORMATTATO E UNIFORMATO -->
+            <p style="font-style: italic; line-height: 1.6;">
+                <strong>Corte Noa</strong><br>
+                Strada Statale 195, km 33,500<br>
+                09010 Pula (CA)
+            </p>
+            
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.389109341704!2d8.975609088878807!3d38.98361496866906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e727cdfdff89a3%3A0x5e7a638f05fec585!2sCorte%20Noa!5e0!3m2!1sit!2sit!4v1773078682446!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+            <!-- BOTTONE NAVIGATORE -->
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Corte+Noa,+09010+Pula+CA" target="_blank" class="btn-mappa">Apri nel Navigatore</a>
+        </section>
+
+        <!-- LUNA DI MIELE -->
+        <section class="hidden">
+            <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+            <h2>Luna di Miele</h2>
+            <p>Il regalo più grande sarà la vostra presenza.<br>Qualora vogliate però dedicarci un ulteriore pensiero, preferiamo non ricevere oggetti, ma un contributo per iniziare la nostra vita insieme e volare verso la nostra luna di miele!</p>
+            <div class="iban-box">
+                <p style="margin:0;"><strong>IBAN:</strong> IT00A0000000000000000000000<br><span style="font-style:italic; font-size:1.1rem;">Intestato a Umberto e Ilaria</span></p>
+            </div>
+        </section>
+
+        <!-- RSVP CHIC (SNELLITO E PROTETTO) -->
+        <section class="hidden">
+            <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+            <h2>Conferma Presenza</h2>
+            <p>Ti preghiamo di darci gentile conferma<br>entro il <strong>31 Luglio 2026</strong>.</p>
+            
+            <form id="rsvp-form">
+                <div class="form-group">
+                    <label>Nome e Cognome</label>
+                    <input type="text" name="Nome" required placeholder="Inserisci il nome qui...">
+                </div>
+
+                <div class="form-group">
+                    <label>Presenza</label>
+                    <select name="Presenza" required>
+                        <option value="" disabled selected>Seleziona un'opzione...</option>
+                        <option value="Sì, parteciperò con gioia!">Sì, parteciperò con gioia!</option>
+                        <option value="Purtroppo non potrò esserci">Purtroppo non potrò esserci</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <!-- Modificato in "allergie" e rimosso campo "canzone" -->
+                    <label>Intolleranze o allergie?</label>
+                    <input type="text" name="Allergie" placeholder="Es. Celiachia, nessuna...">
+                </div>
+
+                <button type="submit" id="submit-btn">Invia Risposta</button>
+            </form>
+            <p id="messaggio-successo" style="display:none; color: var(--verde-scuro); font-style: italic; font-weight: bold; margin-top:20px; border: 1px solid var(--verde-scuro); padding: 10px;">Grazie! La tua risposta è stata registrata con successo.</p>
+        </section>
+
+    </div>
+
+    <script>
+        /* ANIMAZIONI ALLO SCROLL */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        /* CONTO ALLA ROVESCIA CON CONTROLLO DELLO ZERO (PUNTO 1) */
+        const countDownDate = new Date("Sep 25, 2026 16:00:00").getTime();
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            // Se il tempo è scaduto, mostra "Oggi Sposi!" e ferma il timer
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown").innerHTML = "<div class='oggi-sposi'>Oggi Sposi!</div>";
+                return;
+            }
+
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+        }, 1000);
+
+        /* INVIO DATI AL FOGLIO GOOGLE CON PROTEZIONE BOTTONE (PUNTO 2) */
+        // SOSTITUISCI IL LINK QUI SOTTO CON QUELLO DI GOOGLE APPS SCRIPT
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxJnzICaR6glGJiA1pa0IGBgahWn7wzZ8Z3NKqLdVK-OAopJJMppZVceiBBmiPsOzQ/exec';
+        
+        const form = document.forms['rsvp-form'];
+        const btn = document.getElementById('submit-btn');
+        const msg = document.getElementById('messaggio-successo');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // Disabilito il bottone al primo click
+            btn.disabled = true;
+            btn.innerHTML = 'Invio in corso...';
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    msg.style.display = "block";
+                    btn.innerHTML = 'Risposta Inviata';
+                    // Il bottone resta disabilitato per evitare altri invii per sbaglio
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Errore!', error.message);
+                    // In caso di errore di connessione riabilito il bottone per fargli riprovare
+                    btn.disabled = false;
+                    btn.innerHTML = 'Errore di invio. Riprova.';
+                });
+        });
+    </script>
+</body>
+</html>

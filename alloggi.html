@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dove Dormire - Ilaria & Umberto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sfondo-esterno: #F4F1EA;
+            --sfondo-carta: #FDFBF7;
+            --verde-scuro: #2C402E; 
+            --verde-chiaro: #738A76;
+        }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--sfondo-esterno);
+            color: var(--verde-scuro);
+            margin: 0;
+            padding: 40px 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .container-carta {
+            background-color: var(--sfondo-carta);
+            max-width: 650px;
+            width: 100%;
+            padding: 60px 30px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid rgba(44, 64, 46, 0.1);
+            text-align: center;
+        }
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--verde-chiaro);
+            margin: 0 0 20px 0;
+            font-weight: normal;
+        }
+        .alloggio-box {
+            border-bottom: 1px solid var(--verde-chiaro);
+            padding: 20px 0;
+            text-align: left;
+        }
+        .alloggio-box:last-child { border-bottom: none; }
+        .nome-bb {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+        .info-bb { margin: 0; font-style: italic; }
+        
+        .btn-indietro {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 25px;
+            border: 1px solid var(--verde-scuro);
+            color: var(--sfondo-carta);
+            background-color: var(--verde-scuro);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .btn-indietro:hover {
+            background-color: transparent;
+            color: var(--verde-scuro);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-carta">
+        <h2>Dove Dormire</h2>
+        <p>Abbiamo selezionato per voi alcune strutture vicine a Pula per godervi i festeggiamenti in totale relax.</p>
+        
+        <!-- INIZIO LISTA B&B (Puoi copiare e incollare questo blocco per aggiungerne altri) -->
+        <div class="alloggio-box">
+            <p class="nome-bb">Nome del B&B / Hotel 1</p>
+            <p class="info-bb">Via Roma 1, Pula (CA) <br> Tel: +39 333 1234567</p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Nome del B&B / Hotel 2</p>
+            <p class="info-bb">Via Garibaldi 5, Pula (CA) <br> Tel: +39 333 7654321</p>
+        </div>
+        
+        <div class="alloggio-box">
+            <p class="nome-bb">Nome del B&B / Hotel 3</p>
+            <p class="info-bb">Località Santa Margherita, Pula (CA) <br> Tel: +39 333 0000000</p>
+        </div>
+        <!-- FINE LISTA -->
+
+        <!-- BOTTONE PER TORNARE AL SITO PRINCIPALE -->
+        <a href="index.html" class="btn-indietro">Torna alla Home</a>
+    </div>
+
+</body>
+</html>
