@@ -23,37 +23,85 @@
         }
         .container-carta {
             background-color: var(--sfondo-carta);
-            max-width: 650px;
+            max-width: 800px;
             width: 100%;
-            padding: 60px 30px; 
+            padding: 60px 40px; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             border: 1px solid rgba(44, 64, 46, 0.1);
             text-align: center;
         }
         h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: var(--verde-chiaro);
-            margin: 0 0 20px 0;
+            margin: 0 0 10px 0;
             font-weight: normal;
         }
-        .alloggio-box {
-            border-bottom: 1px solid var(--verde-chiaro);
-            padding: 20px 0;
-            text-align: left;
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-style: italic;
         }
-        .alloggio-box:last-child { border-bottom: none; }
-        .nome-bb {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 0 0 5px 0;
-        }
-        .info-bb { margin: 0; font-style: italic; }
         
+        /* Titoli delle varie categorie (Hotel, B&B, ecc.) */
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--verde-scuro);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 40px 0 20px 0;
+            border-bottom: 1px solid var(--verde-chiaro);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .alloggio-box {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(115, 138, 118, 0.03);
+            border-left: 3px solid var(--verde-chiaro);
+        }
+        .nome-bb {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--verde-scuro);
+            margin: 0 0 10px 0;
+        }
+        .info-bb { 
+            margin: 0; 
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .info-bb strong {
+            color: var(--verde-scuro);
+            font-weight: 600;
+        }
+        .prezzo {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: var(--verde-scuro);
+            color: var(--sfondo-carta);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Divisore Botanico */
+        .divisore-ramo {
+            width: 100px;
+            height: 25px;
+            margin: 40px auto;
+            display: block;
+            opacity: 0.7;
+        }
+
         .btn-indietro {
             display: inline-block;
-            margin-top: 40px;
-            padding: 10px 25px;
+            margin-top: 50px;
+            padding: 12px 30px;
             border: 1px solid var(--verde-scuro);
             color: var(--sfondo-carta);
             background-color: var(--verde-scuro);
@@ -61,35 +109,236 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: 0.3s;
+            font-size: 1.1rem;
         }
         .btn-indietro:hover {
             background-color: transparent;
             color: var(--verde-scuro);
         }
+
+        @media (max-width: 600px) {
+            .container-carta { padding: 40px 20px; }
+            h2 { font-size: 3.5rem; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- SVG RAMETTO DA USARE COME DIVISORE -->
+    <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <g id="rametto-vettoriale">
+                <path d="M 5 15 Q 50 20 95 15" fill="none" stroke="var(--verde-chiaro)" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M 25 17 Q 30 5 40 10 Q 33 19 25 17" fill="var(--verde-chiaro)"/>
+                <path d="M 60 18 Q 50 7 43 12 Q 52 21 60 18" fill="var(--verde-chiaro)"/>
+                <path d="M 75 16 Q 80 5 90 10 Q 83 18 75 16" fill="var(--verde-chiaro)"/>
+                <path d="M 45 19 Q 35 28 25 24 Q 38 17 45 19" fill="var(--verde-chiaro)"/>
+            </g>
+        </defs>
+    </svg>
+
     <div class="container-carta">
         <h2>Dove Dormire</h2>
-        <p>Abbiamo selezionato per voi alcune strutture vicine a Pula per godervi i festeggiamenti in totale relax.</p>
+        <p class="intro-text">Abbiamo selezionato per voi alcune strutture vicine a Pula e dintorni<br>per godervi i festeggiamenti in totale relax.</p>
         
-        <!-- INIZIO LISTA B&B (Puoi copiare e incollare questo blocco per aggiungerne altri) -->
+        <!-- CATEGORIA: HOTEL PULA -->
+        <h3>Hotel - Zona Pula</h3>
+
         <div class="alloggio-box">
-            <p class="nome-bb">Nome del B&B / Hotel 1</p>
-            <p class="info-bb">Via Roma 1, Pula (CA) <br> Tel: +39 333 1234567</p>
+            <p class="nome-bb">Villa Alberta</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula, centro città (350m dal centro)<br>
+                <strong>Tipologia:</strong> Hotel a gestione familiare<br>
+                <strong>Descrizione:</strong> Giardino con veranda, camere climatizzate. Colazione inclusa con torte fatte in casa.<br>
+                <strong>Servizi:</strong> Parcheggio gratuito, Wi-Fi, reception 16/24h. 5 min d'auto dalle spiagge di Nora.<br>
+                <span class="prezzo">Stima: €70-100 / notte</span>
+            </p>
         </div>
 
         <div class="alloggio-box">
-            <p class="nome-bb">Nome del B&B / Hotel 2</p>
-            <p class="info-bb">Via Garibaldi 5, Pula (CA) <br> Tel: +39 333 7654321</p>
+            <p class="nome-bb">Hotel Baia di Nora</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula, fronte mare<br>
+                <strong>Tipologia:</strong> Hotel 4 stelle<br>
+                <strong>Descrizione:</strong> Camere ampie con patio o balcone, giardino curato, accesso diretto al mare.<br>
+                <strong>Servizi:</strong> Spiaggia privata, piscina all'aperto, ristorante, parcheggio.<br>
+                <span class="prezzo">Stima: €150-250 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Nora Club Hotel & Spa</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula (1,2 km dalla spiaggia)<br>
+                <strong>Tipologia:</strong> Hotel con Spa<br>
+                <strong>Descrizione:</strong> Immerso in un bellissimo giardino con ulivi e fiori.<br>
+                <strong>Servizi:</strong> Piscina, area benessere (spa), Wi-Fi gratuito.<br>
+                <span class="prezzo">Stima: €130-200 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Hotel Sant'Efis</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula, spiaggia di Su Guventeddu<br>
+                <strong>Tipologia:</strong> Hotel 4 stelle<br>
+                <strong>Descrizione:</strong> Posizione privilegiata tra le rovine di Nora e Santa Vittoria. Camere con arredi raffinati.<br>
+                <strong>Servizi:</strong> Ristorante con vista mare, accesso diretto alla spiaggia.<br>
+                <span class="prezzo">Stima: a partire da €423 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">NOHA Lifestyle Hotel (Adults Only)</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula, a pochi passi dalla spiaggia<br>
+                <strong>Tipologia:</strong> Hotel boutique (solo adulti)<br>
+                <strong>Servizi:</strong> Piscina stagionale, parcheggio privato, giardino curato.<br>
+                <span class="prezzo">Stima: €140-220 / notte</span>
+            </p>
+        </div>
+
+        <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+        <!-- CATEGORIA: B&B PULA -->
+        <h3>Bed & Breakfast - Zona Pula</h3>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">B&B L'Aurora</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Centro storico di Pula<br>
+                <strong>Descrizione:</strong> Camere con bagno privato e aria condizionata. Colazione continentale inclusa.<br>
+                <strong>Distanza:</strong> 1,5 km dalla spiaggia di Nora (collegata con pista ciclabile).<br>
+                <span class="prezzo">Stima: €60-100 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Al Sole di Pula</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Località Su Forru e sa Teula, Pula<br>
+                <strong>Descrizione:</strong> Camere con balconcino, ampio giardino con gazebo e amaca. Pulizie giornaliere.<br>
+                <strong>Distanza:</strong> 800m dalla piazza principale.<br>
+                <span class="prezzo">Stima: €70-110 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">B&B L'Arcobaleno</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula (1,9 km dalla spiaggia di Porto Columbu)<br>
+                <strong>Descrizione:</strong> Camere climatizzate luminose con balcone. Colazione ricchissima.<br>
+                <span class="prezzo">Stima: €65-95 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Emozioni d'Estate</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula, 10 minuti a piedi dal centro<br>
+                <strong>Descrizione:</strong> Camere con patio/balcone. Colazione completa gratuita.<br>
+                <strong>Servizi:</strong> Parcheggio, Wi-Fi, possibilità di navetta aeroporto.<br>
+                <span class="prezzo">Stima: €70-100 / notte</span>
+            </p>
+        </div>
+
+        <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+        <!-- CATEGORIA: CASE VACANZA -->
+        <h3>Case Vacanze e Appartamenti</h3>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Casa Vacanze Pula</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Pula, zona tranquilla vicino al centro<br>
+                <strong>Descrizione:</strong> Spazioso appartamento ideale per 5 persone. Vicino a negozi e supermercati.<br>
+                <span class="prezzo">Stima: €100-150 / notte (intero app.)</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Casa Vacanze Capoterra</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Capoterra (18 km dall'aeroporto, 26 km da Nora)<br>
+                <strong>Descrizione:</strong> Grande appartamento (110 mq, fino a 11 persone) con 2 camere da letto. Terrazza e colazione italiana inclusa.<br>
+                <span class="prezzo">Stima: €150-250 / notte (intero app.)</span>
+            </p>
+        </div>
+
+        <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+        <!-- CATEGORIA: AIRBNB CAPOTERRA E NORA -->
+        <h3>Airbnb e Affitti Brevi<br><span style="font-size: 1.2rem;">(Zona Capoterra / Nora)</span></h3>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Villa Rodani</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Capoterra (colline con vista sul Golfo)<br>
+                <strong>Descrizione:</strong> Villa indipendente nuovissima (2024) con patio e giardino panoramico.<br>
+                <span class="prezzo">Stima: €80-150 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Cottage Perd'e Sali</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Capoterra, Porto Columbu (100m dalla spiaggia)<br>
+                <strong>Descrizione:</strong> Sistemazione accogliente a pochi metri dal mare.<br>
+                <span class="prezzo">Stima: €70-120 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Mansarda La Maddalena Spiaggia</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Capoterra (70m dalla spiaggia)<br>
+                <strong>Descrizione:</strong> Mansarda al 2° piano con terrazza vista mare/montagna. Ristoranti e supermercato a due passi.<br>
+                <span class="prezzo">Stima: €50-90 / notte</span>
+            </p>
+        </div>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Residenza del Sole</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Capoterra, La Maddalena Spiaggia<br>
+                <strong>Descrizione:</strong> Appartamento in complesso residenziale con tutti i servizi e posto auto.<br>
+                <span class="prezzo">Stima: €60-100 / notte</span>
+            </p>
+        </div>
+
+        <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+        <!-- CATEGORIA: CAGLIARI -->
+        <h3>Zona Cagliari <br><span style="font-size: 1.2rem;">(Per chi preferisce stare in città)</span></h3>
+
+        <div class="alloggio-box">
+            <p class="nome-bb">Hotel Italia (3 Stelle)</p>
+            <p class="info-bb">
+                <strong>Indirizzo:</strong> Quartiere Marina, Cagliari (5 min dalla stazione)<br>
+                <strong>Descrizione:</strong> Ambiente tranquillo nel centro storico.<br>
+                <strong>Distanza:</strong> 35 km da Pula.<br>
+                <span class="prezzo">Stima: €90-150 / notte</span>
+            </p>
         </div>
         
-        <div class="alloggio-box">
-            <p class="nome-bb">Nome del B&B / Hotel 3</p>
-            <p class="info-bb">Località Santa Margherita, Pula (CA) <br> Tel: +39 333 0000000</p>
+        <p class="info-bb" style="text-align: left; padding: 0 20px;">
+            <strong>Altri Hotel a Cagliari:</strong><br>
+            Consigliamo i quartieri storici (Marina, Castello, Stampace). I prezzi medi si aggirano tra i €70-170 per i 3 stelle e €140-195 per i 4 stelle.
+        </p>
+
+        <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
+
+        <!-- CONSIGLI PRATICI -->
+        <h3>💡 Consigli Pratici & Trasporti</h3>
+        
+        <div class="alloggio-box" style="background-color: transparent; border-left: none; padding: 0;">
+            <ul style="text-align: left; line-height: 1.8; font-size: 1.1rem; color: var(--verde-scuro);">
+                <li><strong>Prenotate con anticipo:</strong> Settembre è considerato "bassa stagione" in Sardegna, quindi le tariffe sono ridotte rispetto all'estate, ma le strutture potrebbero riempirsi velocemente!</li>
+                <li><strong>Trasporti:</strong> Pula dista circa 35-40 km dall'Aeroporto di Cagliari-Elmas (40 min in auto). Vi consigliamo caldamente il noleggio di un'auto per muovervi liberamente tra la location, l'hotel e le spiagge.</li>
+                <li><strong>Gruppi numerosi:</strong> Se siete gruppi di amici (es. 9 persone), vi suggeriamo di prenotare ville grandi/case vacanza per ammortizzare i costi, oppure di bloccare più stanze nello stesso B&B.</li>
+                <li><strong>Cosa fare nei dintorni:</strong> Non perdetevi il sito archeologico di Nora e le bellissime spiagge di Santa Margherita, Chia, Su Giudeu e Tuerredda!</li>
+            </ul>
         </div>
-        <!-- FINE LISTA -->
 
         <!-- BOTTONE PER TORNARE AL SITO PRINCIPALE -->
         <a href="index.html" class="btn-indietro">Torna alla Home</a>
