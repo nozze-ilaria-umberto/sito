@@ -208,7 +208,7 @@
         <section class="hidden">
             <svg class="divisore-ramo" viewBox="0 0 100 25"><use href="#rametto-vettoriale" /></svg>
             <h2>Luna di Miele</h2>
-            <p>Il regalo più grande sarà la vostra presenza.<br>Qualora vogliate però dedicarci un ulteriore pensiero...</p>
+            <p id="luna-messaggio">Il regalo più grande sarà la vostra presenza.<br>Qualora vogliate però dedicarci un ulteriore pensiero...</p>
             
             <!-- Questo box si aggiorna da solo in base al Foglio Google -->
             <div id="dati-iban-dinamico" style="min-height: 80px; display:flex; justify-content:center; align-items:center;">
@@ -300,14 +300,21 @@
 
         /* 4. LETTURA DINAMICA IBAN DA GOOGLE SHEETS */
         const containerIban = document.getElementById('dati-iban-dinamico');
+        const lunaMessaggio = document.getElementById('luna-messaggio');
         fetch(scriptURL)
             .then(response => response.json())
             .then(data => {
                 if(data.mostra === 'SI') {
+                    if (data.messaggio) {
+                        lunaMessaggio.innerHTML = data.messaggio.replace(/\n/g, '<br>');
+                    }
+                    const causaleHTML = (data.causale && data.causale.trim())
+                        ? `<br><span style="font-style:italic; font-size:1.1rem;">Causale: ${data.causale}</span>`
+                        : '';
                     containerIban.innerHTML = `
                         <div class="iban-box">
                             <p style="margin:0;"><strong>IBAN:</strong> ${data.iban}<br>
-                            <span style="font-style:italic; font-size:1.1rem;">Intestato a ${data.intestatario}</span></p>
+                            <span style="font-style:italic; font-size:1.1rem;">Intestato a: ${data.intestatario}</span>${causaleHTML}</p>
                         </div>
                     `;
                 } else {
